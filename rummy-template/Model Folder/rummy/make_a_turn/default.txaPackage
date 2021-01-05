@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<node uin="-yrgd8ekjd2hf7o-ju52d3">
+		<property name="$metaclass" value="SD20_Interaction"/>
+		<property name="$name" value="Interaction"/>
+		<node uin="-y8nsowkjd37fukvag3yt">
+			<property name="$metaclass" value="SD20_Lifeline"/>
+			<property name="$name" value="Lifeline1"/>
+			<property name="connectableElementName" value="makeATurn"/>
+			<node uin="n68rpbkjd54ui35z9w1i">
+				<property name="$metaclass" value="SD20_StateInvariant"/>
+				<property name="$name" value="StateInvariant1"/>
+				<property name="constraintText" value="an der Reihe"/>
+			</node>
+			<node uin="c87hzvkjd60p99k9q9tt">
+				<property name="$metaclass" value="SD20_ExecutionSpecification"/>
+				<property name="$name" value="SD20_ExecutionSpecification1"/>
+			</node>
+			<link uin="ieje0rkjd38cjxvxjppx">
+				<property name="$metaclass" value="SD20_Lifeline_LinkToConnectableElement"/>
+				<participant referencedUin="design:node:::-y8nsowkjd37fukvag3yt:-yrgd8ekjd2hf7o-ju52d3" role="Client"></participant>
+				<participant referencedUin="jdt:e_class:src:rummy.make_a_turn.impl.Make_a_turn_impl" role="Supplier"></participant>
+			</link>
+		</node>
+		<node uin="l2gqtvkjd60p9aavz082">
+			<property name="$metaclass" value="SD20_Int_InvocationSpecification"/>
+			<property name="$name" value="SD20_Int_InvocationSpecification1"/>
+			<property name="receiveExecutionSpecificationPuin" value="design:node:::c87hzvkjd60p99k9q9tt:-y8nsowkjd37fukvag3yt:-yrgd8ekjd2hf7o-ju52d3"/>
+			<property name="call_cachedSequenceNumber" value="1"/>
+			<property name="sd20_reply_message_exists" value="true"/>
+		</node>
+	</node>
+</nodeSet>

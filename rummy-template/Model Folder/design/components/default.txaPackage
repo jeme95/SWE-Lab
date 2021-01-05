@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<node uin="ba089nkhm1fk7x-mr453p">
+		<property name="$metaclass" value="Component20"/>
+		<property name="$name" value="Player"/>
+	</node>
+	<node uin="ba089nkhm1gq8f-5taabk">
+		<property name="$metaclass" value="Component20"/>
+		<property name="$name" value="Server"/>
+		<node uin="-amcqg9khm1wsc4ncdu3i">
+			<property name="$metaclass" value="Interface20"/>
+			<property name="$name" value="Interface1"/>
+		</node>
+		<node uin="-vedwtdkhm1p08t-9yjarv">
+			<property name="$metaclass" value="Port20"/>
+			<property name="isService" value="true"/>
+			<property name="visibility" value="public"/>
+			<property name="$name" value="Port1"/>
+		</node>
+		<node uin="ba089nkhm1he0v-fti7pz">
+			<property name="$metaclass" value="Component20"/>
+			<property name="$name" value="laying off"/>
+		</node>
+		<node uin="ba089nkhm1h6ee-y3701l">
+			<property name="$metaclass" value="Component20"/>
+			<property name="$name" value="melding cards"/>
+		</node>
+		<node uin="ba089nkhm1gzc867vvfv">
+			<property name="$metaclass" value="Component20"/>
+			<property name="$name" value="make a turn"/>
+		</node>
+	</node>
+	<node uin="ba089nkhm1ivvx-i998xq">
+		<property name="$metaclass" value="Component20"/>
+		<property name="$name" value="Competitor"/>
+	</node>
+</nodeSet>

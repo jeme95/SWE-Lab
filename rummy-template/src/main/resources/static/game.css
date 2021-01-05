@@ -1,0 +1,133 @@
+#boden button {
+	margin: 10px 45px;
+}
+
+.handkarten {
+	margin: 50px 10px 50px 300px;
+	width: 60%;
+	text-align: center;
+}
+
+/* .container {
+	margin: 100px 400px;
+	text-align: center;
+} */
+.handkarten span {
+	font-size: 2em;
+	border: 2px white solid;
+}
+
+#boden {
+	text-align: center;
+}
+
+#linke-karte {
+	margin-right: 52px;
+	position: relative;
+	right: 29px;
+	font-size: 5em;
+}
+
+#rechte-karte {
+	margin-left: 25px;
+	font-size: 5em;
+}
+
+button {
+	background: black;
+	color: white;
+	border-radius: 4px;
+	font-size: 0.9em;
+	height: 30px;
+	padding: 0px 10px;
+}
+
+button:hover {
+	cursor: pointer;
+	background: #FC5103;
+	color: black;
+}
+
+.anzahl-karten {
+	margin: 0px 20px;
+	font-size: 1.6em;
+}
+
+#links_anzahl_karten {
+	position: relative;
+	right: 20px;
+}
+
+.handkarten legend {
+	text-align: left;
+	font-weight: bold;
+}
+
+.code:hover {
+	cursor: pointer;
+	border: 2px #8080c0 dashed;
+	transition: all 200ms ease-in-out 0s;
+}
+
+input[type=button] {
+	margin: 10px 45px;
+	background-color: black;
+	color: white;
+	border-radius: 4px;
+	font-size: 0.9em;
+	height: 30px;
+	padding: 0px 10px;
+}
+
+input[type=button]:hover {
+	cursor: pointer;
+	background: #FC5103;
+	color: black;
+}
+
+.buttonActiveOnTurn {
+	position: relative;
+	left: 73px;
+}
+
+#ablegen {
+	float: right;
+	position: relative;
+	right: 400px;
+	bottom: 50px;
+}
+
+table{
+	margin-bottom:50px;
+}
+
+input[type="button" i]:disabled {
+  color: rgba(16, 16, 16, 0.3);
+  background-color:rgba(239, 239, 239, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
+}
+
+input[type="button" i]:disabled:hover {
+  color: rgba(16, 16, 16, 0.3);
+  background-color:rgba(239, 239, 239, 0.3);
+  border-color: rgba(118, 118, 118, 0.3);
+  cursor: default;
+}
+
+#istDran{
+  float: right;
+  color: red;
+  font-size: 1.8em;
+    margin: 5px;
+}
+
+.active {
+  border: 2px red solid !important;
+}
+
+h6{
+		font-size: 2.4em;
+	border: 2px white solid;
+	display:inline; 
+	  font-weight: normal;
+}

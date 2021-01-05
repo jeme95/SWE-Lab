@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V-oyrl70kgnby1nvb98etl">
+		<property name="$metaclass" value="ComponentDiagram20"/>
+		<property name="$name" value="Component Diagram1"/>
+		<reference referencedUin="design:node:::ba089nkhm1fk7x-mr453p">
+			<property name="bounds" value="55,255,127,121"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+		<reference referencedUin="design:node:::ba089nkhm1gq8f-5taabk">
+			<property name="bounds" value="455,115,693,368"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<reference referencedUin="design:node:::ba089nkhm1he0v-fti7pz:ba089nkhm1gq8f-5taabk">
+				<property name="bounds" value="208,225,161,61"/>
+				<property name="location_set_by_user" value="true"/>
+				<property name="bounds_setted_by_user" value="true"/>
+			</reference>
+			<reference referencedUin="design:node:::-vedwtdkhm1p08t-9yjarv:ba089nkhm1gq8f-5taabk">
+				<property name="bounds" value="-7,114,14,14"/>
+				<property name="location_set_by_user" value="true"/>
+				<property name="bounds_setted_by_user" value="true"/>
+				<reference referencedUin="label:$port20InplaceEditing:design:node:::-vedwtdkhm1p08t-9yjarv:ba089nkhm1gq8f-5taabk">
+					<property name="bounds" value="-7,24,28,15"/>
+				</reference>
+			</reference>
+			<reference referencedUin="design:node:::ba089nkhm1gzc867vvfv:ba089nkhm1gq8f-5taabk">
+				<property name="bounds" value="236,5,141,61"/>
+				<property name="location_set_by_user" value="true"/>
+				<property name="bounds_setted_by_user" value="true"/>
+			</reference>
+			<reference referencedUin="design:node:::ba089nkhm1h6ee-y3701l:ba089nkhm1gq8f-5taabk">
+				<property name="bounds" value="234,125,145,65"/>
+				<property name="location_set_by_user" value="true"/>
+				<property name="bounds_setted_by_user" value="true"/>
+			</reference>
+			<reference referencedUin="design:node:::-amcqg9khm1wsc4ncdu3i:ba089nkhm1gq8f-5taabk">
+				<property name="bounds" value="176,25,20,20"/>
+				<property name="location_set_by_user" value="true"/>
+				<reference referencedUin="label:$name:design:node:::-amcqg9khm1wsc4ncdu3i:ba089nkhm1gq8f-5taabk">
+					<property name="bounds" value="-16,30,52,15"/>
+				</reference>
+			</reference>
+		</reference>
+		<reference referencedUin="design:node:::ba089nkhm1ivvx-i998xq">
+			<property name="bounds" value="1235,255,100,152"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+	</view>
+</nodeSet>

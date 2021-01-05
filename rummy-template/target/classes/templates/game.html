@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>RUMMY GAME</title>
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<link rel="stylesheet" href="/game.css">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body th:data="${matchId}" onload="connect();">
+	<h1 align="center">
+		Player: <span th:text="${name}"> </span> Match: <span
+			th:text="${matchId}"> default id</span>
+	</h1>
+
+	<table align="center">
+		<tbody>
+			<tr>	
+				<td>RUNNING</td>
+				<td th:if="${state.canStop}">
+					<form method="POST" action="/rummy/quit">
+						<button>quit the game</button>
+					</form>
+				</td>	
+			</tr>
+		</tbody>	
+	</table>
+	<div th:data-indexCurrentPlayer="${indexCurrentPlayer}" id="boden">
+		<span th:text="${anzahlVerdeckte}" class="anzahl-karten"
+			id="links_anzahl_karten">unknown</span> <span class="karte"
+			id="linke-karte">&#127136</span> <span th:utext="'&#' + ${stapelObenOffene}" class="karte"
+			id="rechte-karte">&#127219</span> <span th:text="${anzahlOffene}"
+			class="anzahl-karten">unknown</span> <br> <input th:data-ablegenmoeglich="${ablegenMoeglich}"
+			 type="button" id="ablegen"
+			value="ablegen" onclick='finishTurn();' disabled/> <input
+			th:disabled="${!ziehenMoeglich}" type="button"
+			class="buttonActiveOnTurn" id="ziehen_verdeckt" onclick='addCard();'
+			value="ziehen verdeckt" />
+		<!-- 			<input type="button"
+				class="buttonActiveOnTurn" id="ziehen_verdeckt2" value="ziehen2"  /> -->
+
+
+		<div th:each="player:${players}" class="container">
+			<fieldset class="handkarten">
+				<legend th:text="${player.getName()}"> player name</legend>
+				<h6 th:if="${player.getIstDran()}"> <h6 id="istDran">*</h6>
+
+				</h6> <h6 th:each="karte:${player.getHandKarten()}"> <h6
+					th:if="${player.getName() == name }"> <span
+						th:utext="'&#' + ${karte.getCode()}" class="code">code</span>
+				</h6> <h6 th:unless="${player.getName() == name}"> <span
+						th:utext="${verdeckt}">verdeckte</span>
+				</h6>
+				</h6>
+			</fieldset>
+		</div>
+		<script src="/app.js"></script>
+</body>
+</html>

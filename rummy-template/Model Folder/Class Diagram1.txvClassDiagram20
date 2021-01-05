@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V1hexuhkgnbx75b-kuji1r">
+		<property name="$metaclass" value="ClassDiagram20"/>
+		<property name="$name" value="Class Diagram1"/>
+		<reference referencedUin="jdt:e_class:src:rummy.laying_off.impl.Laying_off_impl">
+			<property name="bounds" value="95,275,241,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.laying_off.port.Laying_off_port">
+			<property name="bounds" value="335,115,260,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.laying_off.port.Laying_off_provided">
+			<property name="bounds" value="615,233,285,139"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.laying_off.LayingOffFassade">
+			<property name="bounds" value="335,435,240,92"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<reference referencedUin="jdt:l_ast:src:rummy.laying_off.LayingOffFassade:laying_off_impl">
+				<property name="sourceAnchor" value="408,440"/>
+				<property name="targetAnchor" value="282,360"/>
+			</reference>
+			<reference referencedUin="jdt:l_impl:src:rummy.laying_off.LayingOffFassade:Laying_off_provided">
+				<property name="sourceAnchor" value="552,440"/>
+				<property name="targetAnchor" value="651,377"/>
+			</reference>
+		</reference>
+	</view>
+</nodeSet>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V1hexuhkgnd9me5-b5cgx2">
+		<property name="$metaclass" value="ClassDiagram20"/>
+		<property name="$name" value="jeme"/>
+		<property name="__options" value="option.shadows=false&#10;Show Simple Interfaces=false&#10;Diagram Detail Level=Implementation&#10;show_shortcut_sign=false"/>
+		<reference referencedUin="jdt:e_class:src:rummy.webui.MainController">
+			<property name="bounds" value="275,455,284,189"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<reference referencedUin="jdt:l_ast:src:rummy.webui.MainController:dummy">
+				<property name="sourceAnchor" value="564,520"/>
+				<property name="targetAnchor" value="740,520"/>
+			</reference>
+			<reference referencedUin="jdt:l_impl:src:rummy.webui.MainController:Observer">
+				<property name="sourceAnchor" value="437,460"/>
+				<property name="targetAnchor" value="437,340"/>
+			</reference>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.logic.DummyObserver">
+			<property name="bounds" value="335,255,195,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<reference referencedUin="label:$name:jdt:e_class:src:rummy.logic.DummyObserver">
+				<property name="bounds" value="-35,30,90,15"/>
+			</reference>
+			<reference referencedUin="jdt:e_method:src:rummy.logic.DummyObserver.update:update~I">
+			</reference>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.logic.Dummy">
+			<property name="bounds" value="735,455,301,161"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<reference referencedUin="jdt:e_method:src:rummy.logic.Dummy.detach:detach~QDummyObserver;">
+			</reference>
+			<reference referencedUin="jdt:e_method:src:rummy.logic.Dummy.incValue:incValue">
+			</reference>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.webui.views.View">
+			<property name="bounds" value="715,195,200,152"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+	</view>
+</nodeSet>
