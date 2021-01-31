@@ -31,7 +31,7 @@ function reload_rummy() {
 function addCard() {
   var form = document.createElement('form');
   form.setAttribute('method', 'post');
-  form.setAttribute('action', '/rummy/addCard');
+  form.setAttribute('action', '/rummy/verdecktZiehen');
   form.style.display = 'hidden';
   document.body.appendChild(form)
   form.submit();
@@ -42,7 +42,7 @@ function finishTurn() {
 /*
   var form = document.createElement('form');
   form.setAttribute('method', 'post');
-  form.setAttribute('action', '/rummy/finishTurn');
+  form.setAttribute('action', '/rummy/karteAblegen');
   form.style.display = 'hidden';
   document.body.appendChild(form)
   form.submit();
@@ -51,7 +51,7 @@ function finishTurn() {
   var formData = new FormData();
   formData.append("indexKarteSelected",indexKarteSelected );
   var request = new XMLHttpRequest();
-request.open("POST", "/rummy/finishTurn");
+request.open("POST", "/rummy/karteAblegen");
 request.send(formData);
 }
 

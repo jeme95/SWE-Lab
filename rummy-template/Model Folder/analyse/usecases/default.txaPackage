@@ -136,4 +136,39 @@
 			<participant referencedUin="design:node:::74mkgckgsd84dd-cidhoj:8krugmkgscb3gh-gu8yo2" role="Supplier"></participant>
 		</link>
 	</node>
+	<node uin="-46k66rkkfu1b48qh5b7q">
+		<property name="$metaclass" value="Activity20"/>
+		<property name="$name" value="make_a_turn"/>
+		<node uin="-qbjze4kkfu41vkqfmzt2">
+			<property name="$metaclass" value="Action20"/>
+			<property name="$name" value="Spieler erstellt ein neues Spiel"/>
+		</node>
+		<node uin="a6k48rkkfu1u60-pj2zrf">
+			<property name="$metaclass" value="ActivityPartition"/>
+			<property name="$name" value="Player"/>
+			<link uin="ieje0rkkfu3vz9stevqo">
+				<property name="$metaclass" value="containedNode"/>
+				<participant referencedUin="design:node:::a6k48rkkfu1u60-pj2zrf:-46k66rkkfu1b48qh5b7q" role="Client"></participant>
+				<participant referencedUin="design:node:::88joqskkfu3vz4-s5s0sz:-46k66rkkfu1b48qh5b7q" role="Supplier"></participant>
+			</link>
+			<link uin="ieje0rkkfu41vlgkd5cf">
+				<property name="$metaclass" value="containedNode"/>
+				<participant referencedUin="design:node:::a6k48rkkfu1u60-pj2zrf:-46k66rkkfu1b48qh5b7q" role="Client"></participant>
+				<participant referencedUin="design:node:::-qbjze4kkfu41vkqfmzt2:-46k66rkkfu1b48qh5b7q" role="Supplier"></participant>
+			</link>
+		</node>
+		<node uin="a6k48rkkfu321c-x1lj0u">
+			<property name="$metaclass" value="ActivityPartition"/>
+			<property name="$name" value="System"/>
+		</node>
+		<node uin="88joqskkfu3vz4-s5s0sz">
+			<property name="$metaclass" value="InitialNode20"/>
+			<property name="$name" value="InitialNode20"/>
+			<link uin="ieje0rkkfu57m8uzsl1">
+				<property name="$metaclass" value="ControlFlow20"/>
+				<participant referencedUin="design:node:::88joqskkfu3vz4-s5s0sz:-46k66rkkfu1b48qh5b7q" role="Client"></participant>
+				<participant referencedUin="design:node:::-qbjze4kkfu41vkqfmzt2:-46k66rkkfu1b48qh5b7q" role="Supplier"></participant>
+			</link>
+		</node>
+	</node>
 </nodeSet>

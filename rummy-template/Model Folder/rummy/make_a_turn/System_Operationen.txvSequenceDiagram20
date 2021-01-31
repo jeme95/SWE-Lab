@@ -21,7 +21,7 @@
 					<property name="bounds_setted_by_user" value="true"/>
 				</reference>
 				<reference referencedUin="design:node:::n68rpbkjd54ui35z9w1i:-y8nsowkjd37fukvag3yt:-yrgd8ekjd2hf7o-ju52d3">
-					<property name="bounds" value="62,63,45,19"/>
+					<property name="bounds" value="45,63,79,19"/>
 					<property name="location_set_by_user" value="true"/>
 					<property name="bounds_setted_by_user" value="true"/>
 				</reference>
@@ -30,6 +30,8 @@
 				<property name="bounds" value="191,100,16,16"/>
 				<reference referencedUin="sd20_message_container:design:node:::l2gqtvkjd60p9aavz082:-yrgd8ekjd2hf7o-ju52d3">
 					<reference referencedUin="sd20_message|1|call|59(design:node:::l2gqtvkjd60p9aavz082:-yrgd8ekjd2hf7o-ju52d3)">
+						<property name="sourceAnchor" value="214,140"/>
+						<property name="targetAnchor" value="274,140"/>
 						<reference referencedUin="sd20_message_label:sd20_message|1|call|59(design:node:::l2gqtvkjd60p9aavz082:-yrgd8ekjd2hf7o-ju52d3)">
 						</reference>
 					</reference>

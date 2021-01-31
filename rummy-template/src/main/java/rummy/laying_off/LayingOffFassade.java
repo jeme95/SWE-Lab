@@ -14,8 +14,6 @@ public class LayingOffFassade implements Laying_off_provided{
 	private StateMachine stateMachine;									// jeme
 	
 	public void foo(){
-		if (!stateMachine.getState().isSubStateOf(State.S.CanCallFOO))					// jeme
-			return;																		// jeme
 		this.laying_off_impl.foo();}
 
 }

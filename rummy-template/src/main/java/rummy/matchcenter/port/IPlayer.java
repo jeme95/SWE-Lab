@@ -1,11 +1,11 @@
 package rummy.matchcenter.port;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import rummy.matchcenter.impl.Karte;
 
 public interface IPlayer {
+
 	List<Karte> getHandKarten();
 
 	IMatch currentMatch();

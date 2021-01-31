@@ -3,7 +3,7 @@ package rummy.matchcenter.impl;
 import rummy.matchcenter.port.IKarte;
 
 public class Karte implements IKarte {
-	
+
 	public Karte(Wert wert, Type typ, int code) {
 		this.wert = wert;
 		this.typ = typ;
@@ -40,6 +40,5 @@ public class Karte implements IKarte {
 	public Wert wert;
 	public Type typ;
 	int Code;
-
-
+	
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V-b8dyjikkftysbe6cymgd">
+		<property name="$metaclass" value="ActivityDiagram20"/>
+		<property name="$name" value="make_a_turn"/>
+		<reference referencedUin="design:node:::-46k66rkkfu1b48qh5b7q">
+			<property name="bounds" value="115,75,1236,696"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="bounds_setted_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<property name="row_children" value="true"/>
+			<reference referencedUin="design:node:::a6k48rkkfu321c-x1lj0u:-46k66rkkfu1b48qh5b7q">
+				<property name="bounds" value="462,0,741,672"/>
+				<property name="location_set_by_user" value="true"/>
+				<property name="$orientation" value="vertical"/>
+				<property name="bounds_setted_by_user" value="true"/>
+			</reference>
+			<reference referencedUin="design:node:::a6k48rkkfu1u60-pj2zrf:-46k66rkkfu1b48qh5b7q">
+				<property name="bounds" value="22,0,421,672"/>
+				<property name="location_set_by_user" value="true"/>
+				<property name="$orientation" value="vertical"/>
+				<property name="row_children" value="true"/>
+				<property name="bounds_setted_by_user" value="true"/>
+				<reference referencedUin="design:node:::88joqskkfu3vz4-s5s0sz:-46k66rkkfu1b48qh5b7q">
+					<property name="bounds" value="37,26,15,15"/>
+					<property name="location_set_by_user" value="true"/>
+					<reference referencedUin="design:link:::ieje0rkkfu57m8uzsl1:88joqskkfu3vz4-s5s0sz:-46k66rkkfu1b48qh5b7q">
+						<property name="sourceAnchor" value="195,147"/>
+						<property name="targetAnchor" value="280,147"/>
+						<property name="bendpoints" value=""/>
+					</reference>
+				</reference>
+				<reference referencedUin="design:node:::-qbjze4kkfu41vkqfmzt2:-46k66rkkfu1b48qh5b7q">
+					<property name="bounds" value="137,26,181,30"/>
+					<property name="location_set_by_user" value="true"/>
+					<property name="bounds_setted_by_user" value="true"/>
+				</reference>
+			</reference>
+		</reference>
+	</view>
+</nodeSet>

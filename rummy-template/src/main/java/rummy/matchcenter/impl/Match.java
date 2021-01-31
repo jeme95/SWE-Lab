@@ -14,24 +14,32 @@ import rummy.statemachine.port.State;
 import rummy.statemachine.port.StateMachine;
 import rummy.statemachine.StateMachineCenter;
 
-
 public class Match implements IMatch {
 
-	/**
+	
+/*#rummy.matchcenter.impl.Karte lnkKarte*/
+
+
+/**
 	 * @directed true
 	 * @link aggregation
 	 * @supplierRole host
 	 */
-
 	private Player host;
-	private StateMachine stateMachine;
-//	private StateMachinePort stateMachinePort;
+	
+	/**
+	 * @directed true
+	 * @link composition
+	 * @supplierRole stateMachine
+	 */
+	public StateMachine stateMachine;
 
-
+	@Override
 	public StateMachine getStateMachine() {
 		return stateMachine;
 	}
 
+	@Override
 	public void setStateMachine(StateMachine stateMachine) {
 		this.stateMachine = stateMachine;
 	}
@@ -46,7 +54,15 @@ public class Match implements IMatch {
 	 */
 	@SuppressWarnings("unused")
 	private rummy.matchcenter.impl.Player lnkPlayer;
-	private List<Player> players = new ArrayList<>();
+	public List<Player> players = new ArrayList<>();
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
 
 	@SuppressWarnings("unused")
 	private int numberOfSeries;
@@ -60,20 +76,43 @@ public class Match implements IMatch {
 		}
 		return false;
 	}
-
-	List<Karte> allKarten = new ArrayList<Karte>();
-	List<Karte> offeneKarten = new ArrayList<Karte>();
-	Karte obersteOffenerKarte;
-	int indexCurrentPlayer;
+	/**
+	 * @clientCardinality
+	 * @clientRole match
+	 * @directed true
+	 * @link composition
+	 * @supplierCardinality 0..110
+	 * @supplierRole allKarten
+	 */
+	public List<Karte> allKarten = new ArrayList<Karte>();
+	
+	
+	/**
+	 * @clientCardinality
+	 * @clientRole match
+	 * @directed true
+	 * @link composition
+	 * @supplierCardinality 0..110
+	 * @supplierRole offeneKarten
+	 */
+	public List<Karte> offeneKarten = new ArrayList<Karte>();
+	
+	/**
+	 * @directed true
+	 * @link composition
+	 * @supplierRole obersteOffenerKarte
+	 */
+	public Karte obersteOffenerKarte = new Karte(Wert.Ass, Type.Joker, 127219);
+	public int indexCurrentPlayer;
 
 	@Override
 	public void initialiseMatch() {
-//		this.stateMachine = 
-		System.out.println("GAME STARTED");
-		this.createAllKarten(); // Sets erzeugen (2 Sets je 52 Blatt + 2 Joker)
-		this.kartenVerteilen(); // Karten auf Spieler verteilen
+
+		this.createAllKarten();
+		this.kartenVerteilen();
 		this.givePlayersIndexes();
 		this.initilisePlayers();
+		this.stateMachine.setState(State.S.VerdecktGezogen);
 
 	}
 
@@ -94,10 +133,12 @@ public class Match implements IMatch {
 		return this.indexCurrentPlayer;
 	}
 
+	public void setIndexCurrentPlayer(int indexCurrentPlayer) {
+		this.indexCurrentPlayer = indexCurrentPlayer;
+	}
+
 	@Override
 	public Karte getObersteOffenerKarte() {
-//		int size = this.getOffeneKarten().size()-1; 
-//		return this.getOffeneKarten().get(size);
 		return this.obersteOffenerKarte;
 	}
 
@@ -159,7 +200,7 @@ public class Match implements IMatch {
 		for (int i = 0, code = 127137; i <= 3; i++) {
 			Type t = Types[i];
 			for (int j = 0; j < 13; j++) {
-				while (isInArray(code, notValidValues)) // überspringe alle ungültigen werte
+				while (isInArray(code, notValidValues))
 					code++;
 				Karte karte = new Karte(werte[j], t, code);
 				Karte karte2 = new Karte(werte[j], t, code);
@@ -171,36 +212,24 @@ public class Match implements IMatch {
 			}
 		}
 		for (int i = 0; i < 4; i++) {
-			Karte joker = new Karte(werte[0], Type.Joker, 127199); // code of joker
+			Karte joker = new Karte(werte[0], Type.Joker, 127199);
 			this.allKarten.add(joker);
 		}
 		Collections.shuffle(this.allKarten);
 		Collections.shuffle(this.allKarten);
-
-		// eine initale Karte dem offenen Stapel hinzufügen
-		Karte initialOffeneKarte = new Karte(Wert.Ass, Type.Joker, 127219);
-		this.offeneKarten.add(initialOffeneKarte);
-		this.obersteOffenerKarte = initialOffeneKarte;
-
 	}
 
 	@Override
 	public void kartenVerteilen() {
-//System.out.println("karten Verteilen aufgerufen");
-		for (Player player : this.players) { // jeder Spieler bekommt 13 Karten
+		for (Player player : this.players) {
 			for (int j = 0; j < 13; j++) {
 				Karte karte = this.allKarten.remove(0);
 				player.handKarten.add(karte);
 			}
 		}
-		
+
 		Karte k = this.allKarten.remove(0);
 		this.players.get(0).handKarten.add(k);
-		/*
-		 * Karte k = this.allKarten.remove(0); // Host bekommt 14 => +1
-		 * this.players.get(0).handKarten.add(k);
-		 */
-
 		for (Player player : this.players) {
 			player.istDran = false;
 
@@ -217,61 +246,37 @@ public class Match implements IMatch {
 	}
 
 	@Override
-	public void addKarte(IPlayer player) {
+	public void verdecktZiehen(IPlayer player) {
 		if (player.getHatGezogen() == false) {
 
 			Karte karte = this.getAllKarten().remove(0);
 			player.getHandKarten().add(karte);
 			player.setHatGezogen(true);
 		}
-		this.stateMachine.setState(State.S.CanCallFOO);							// *******************************
+		this.stateMachine.setState(State.S.VerdecktGezogen);
 	}
 
-	public void finishTurn(IPlayer player, int indexKarteSelected) {
-//		System.out.println("\n vorher:");
-		for (IPlayer player2 : this.players) {
-//	System.out.println(player2.getName() +" ist dran ? "+player2.getIstDran() );
-//			System.out.println(player2.getName() + " hat gezogen? " + player2.getHatGezogen());
-//			System.out.println();
-		}
-
-//		System.out.println("\n\n\n Player " +player.getName()+ " mit Index " +player.getIndex()+ " hat finishTurn aufgerufen");
+	public void karteAblegen(IPlayer player, int indexKarteSelected) {
+		
 		if (player.getIstDran()) {
 			Karte karte = player.getHandKarten().remove(indexKarteSelected);
 
 			this.offeneKarten.add(karte);
 			this.obersteOffenerKarte = karte;
-//			System.out.println(player.getName() + " ist NICHT mehr dran");
 			player.setIstDran(false);
-//			System.out.println("player.getIndex() = "+player.getIndex());
-//			System.out.println("player.getIndex() +1  = "+player.getIndex() + 1);
 
-			int nextPlayer = (player.getIndex() + 1) % (this.players.size()); // kritisch
-//			System.out.println("size = "+this.players.size());
-//			System.out.println("nextPlayer ist "+nextPlayer);
+			int nextPlayer = (player.getIndex() + 1) % (this.players.size());
 
-//			System.out.println("next player is: " + this.players.get(nextPlayer).getName());
-			// give the next player the turn
 			this.players.get(nextPlayer).setIstDran(true);
 			this.players.get(nextPlayer).setHatGezogen(false);
-//			System.out.println("hatGezogen of nextPlayer, also of " + this.players.get(nextPlayer).getName() + " ist "
-//					+ this.players.get(nextPlayer).getHatGezogen());
 
-//			System.out.println(this.players.get(nextPlayer).getName() + " ist nun dran ");
 			this.indexCurrentPlayer = nextPlayer;
-//			System.out.println("indexCurrentPlayer = "+indexCurrentPlayer);
-//			System.out.println("finishTurn beendet");
-			
 
 		}
 
-		System.out.println("\n nachher:");
-//		for (IPlayer player2 : this.players) {
-////	System.out.println(player2.getName() +" ist dran ? "+player2.getIstDran() );
-//			System.out.println(player2.getName() + " hat gezogen? " + player2.getHatGezogen());
-//			System.out.println();
-//		}
-		this.stateMachine.setState(State.S.CanCallFOO);							// *******************************		
+		this.stateMachine.setState(State.S.ZugBeendet);
+		this.stateMachine.setState(State.S.MussZiehen);
+
 	}
 
 }

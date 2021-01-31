@@ -11,11 +11,14 @@ public interface State {
 	boolean isSuperStateOf(State state);
 
 	public enum S implements State {
-		CanCallFOO,
 		Initialized, Closed,//
-		MustJoin, JoinOrStart, MustStart, Play,//
+		MustJoin, JoinOrStart, MustStart, Play, CanCallFoo,//
 		CanStart(JoinOrStart, MustStart), //
-		Join(MustJoin,CanStart);
+		Join(MustJoin,CanStart),
+		MussZiehen, VerdecktGezogen, OffenGezogen, ZugBeendet,
+		MussEroeffnen, HatEroeffnet, MussAnlegen, MussJokerTauschen, JokerAufHand,
+		MakeAturn(MussZiehen, VerdecktGezogen, OffenGezogen, ZugBeendet),
+		MeldingCards(MussEroeffnen, HatEroeffnet, MussAnlegen, MussJokerTauschen, JokerAufHand);
 
 		private List<State> subStates;
 

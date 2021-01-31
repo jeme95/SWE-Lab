@@ -10,11 +10,28 @@ import rummy.matchcenter.port.IPlayer;
 public class Player implements IPlayer {
 
 	private String name;
+	
+	/**
+	 * @directed true
+	 * @link aggregation
+	 * @supplierRole match
+	 */
 	private Match match;
 	boolean istDran;
 	public int index;
 	boolean hatGezogen; 
-
+	
+	/**
+	 * @clientCardinality
+	 * @clientRole player
+	 * @directed true
+	 * @link composition
+	 * @supplierCardinality 0..14
+	 * @supplierRole handKarten
+	 */
+	
+	@SuppressWarnings("unused")
+	private rummy.matchcenter.impl.Karte lnkKarte;
 	List<Karte> handKarten = new ArrayList<Karte>();
 
 	Player(Match match, String name) {
@@ -31,7 +48,7 @@ public class Player implements IPlayer {
 	public String getName() {
 		return this.name;
 	}
-
+	
 	@Override
 	public List<Karte> getHandKarten() {
 		return this.handKarten;
@@ -58,7 +75,6 @@ public class Player implements IPlayer {
 	
 	@Override
 	public void setHatGezogen(boolean status) {
-		System.out.println("setHatGezogen of "+this.getName() +" wurde aufgerufen, und sein Wert of hatGezogen wird gerade auf "+ status + " gesetzt");
 		this.hatGezogen = status ; 
 	}
 	
@@ -66,5 +82,4 @@ public class Player implements IPlayer {
 	public void setIstDran(boolean status) {
 		this.istDran = status ; 
 	}
-	
 }

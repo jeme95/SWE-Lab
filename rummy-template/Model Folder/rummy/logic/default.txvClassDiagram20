@@ -7,15 +7,23 @@
 		<property name="$metaclass" value="ClassDiagram20"/>
 		<property name="__options" value="option.nlayout.recursive=true"/>
 		<reference referencedUin="jdt:e_class:src:rummy.logic.Dummy">
-			<property name="bounds" value="216,5,171,137"/>
+			<property name="bounds" value="455,35,200,137"/>
 			<property name="location_set_by_user" value="true"/>
 		</reference>
 		<reference referencedUin="jdt:e_class:src:rummy.logic.DummyObserver">
-			<property name="bounds" value="5,205,124,80"/>
+			<property name="bounds" value="5,205,142,80"/>
 			<property name="location_set_by_user" value="true"/>
 		</reference>
 		<reference referencedUin="design:view:::k26vhokhm5cqz1-1xsvid">
 			<property name="bounds" value="105,5,91,60"/>
+			<property name="location_set_by_user" value="true"/>
+		</reference>
+		<reference referencedUin="design:view:::V1hexuhkjct5shv-vfft8v">
+			<property name="bounds" value="5,5,84,91"/>
+			<property name="location_set_by_user" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.logic.LogicImpl">
+			<property name="bounds" value="195,20,200,167"/>
 			<property name="location_set_by_user" value="true"/>
 		</reference>
 	</view>

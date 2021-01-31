@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V1hexuhkkieyqywfd5j8d">
+		<property name="$metaclass" value="ClassDiagram20"/>
+		<property name="$name" value="Uebersicht_jeme"/>
+		<reference referencedUin="jdt:e_class:src:rummy.webui.MainController">
+			<property name="bounds" value="604,488,200,392"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<reference referencedUin="jdt:l_impl:src:rummy.webui.MainController:Observer">
+				<property name="sourceAnchor" value="721,493"/>
+				<property name="targetAnchor" value="721,230"/>
+			</reference>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.logic.Dummy">
+			<property name="bounds" value="975,275,200,137"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.logic.DummyObserver">
+			<property name="bounds" value="439,320,195,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.statemachine.port.Observer">
+			<property name="bounds" value="629,145,200,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+	</view>
+</nodeSet>

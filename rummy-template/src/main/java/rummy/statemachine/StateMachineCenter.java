@@ -33,7 +33,6 @@ public class StateMachineCenter implements StateMachinePort, SubjectPort{
 	
 	@Override
 	public synchronized StateMachine mkNewMachine(int id) {
-		System.out.println("eine neue Machine mit der id "+ id+ " wurde erzeugt");
 		if (this.openMachines.containsKey(id))
 			return null;
 		StateMachineImpl stateMachine = new StateMachineImpl();
@@ -58,7 +57,7 @@ public class StateMachineCenter implements StateMachinePort, SubjectPort{
 	}
 
 	@Override
-	public synchronized Subject subject(int id) {
+	public synchronized Subject subject(int id) {		// damit
 		return this.openMachines.get(id);
 	}
 

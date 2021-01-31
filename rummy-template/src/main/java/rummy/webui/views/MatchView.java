@@ -15,7 +15,6 @@ import rummy.webui.views.container.StateContainer;
 public class MatchView implements IView {
 
 	private static final String TEMPLATE_NAME = "match";
-
 	private static final String NAME_ATTR = "name";
 	private static final String MATCHID_ATTR = "matchId";
 	private static final String STATE_ATTR = "state";
@@ -76,5 +75,6 @@ public class MatchView implements IView {
 		}
 		this.model.addAttribute(MatchView.PLAYERS_ATTR, pcl);
 	}
+
 
 }

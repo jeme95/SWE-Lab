@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<nodeSet  version="1.1">
+	<view uin="V1hexuhkkf0v355-psnw8w">
+		<property name="$metaclass" value="ClassDiagram20"/>
+		<property name="$name" value="probeJeme"/>
+		<reference referencedUin="jdt:e_class:src:rummy.make_a_turn.Class1">
+			<property name="bounds" value="395,515,80,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+			<reference referencedUin="jdt:l_gnt:src:rummy.make_a_turn.Class1:Class2">
+				<property name="sourceAnchor" value="400,520"/>
+				<property name="targetAnchor" value="400,320"/>
+			</reference>
+			<reference referencedUin="jdt:l_impl:src:rummy.make_a_turn.Class1:Interface1">
+				<property name="sourceAnchor" value="479,520"/>
+				<property name="targetAnchor" value="479,320"/>
+				<property name="bendpoints" value=""/>
+			</reference>
+			<reference referencedUin="jdt:l_dpn:src:rummy.make_a_turn.Class1:lnkInterface2">
+				<property name="sourceAnchor" value="480,544"/>
+				<property name="targetAnchor" value="860,396"/>
+				<property name="bendpoints" value=""/>
+			</reference>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.make_a_turn.Interface1">
+			<property name="bounds" value="455,235,87,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+		<reference referencedUin="jdt:e_class:src:rummy.make_a_turn.Class2">
+			<property name="bounds" value="316,235,80,80"/>
+			<property name="location_set_by_user" value="true"/>
+			<property name="$shortcutReference" value="true"/>
+		</reference>
+	</view>
+</nodeSet>

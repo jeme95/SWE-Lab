@@ -88,11 +88,4 @@ class MatchCenterImpl implements MatchManagementPort, MatchFactory, MatchManagem
 		return false;
 	}
 
-//	@Override
-//	public void initialiseMatch(IMatch match) {
-//		// TODO Auto-generated method stub
-//		System.out.println("MatchCenterImpl.initialiseMatch wurde aufgerufen");
-//		
-//	}
-
 }

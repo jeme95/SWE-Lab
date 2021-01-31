@@ -13,9 +13,10 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import rummy.logic.port.MVCPort;
 import rummy.logic.port.MatchPort;
-import rummy.matchcenter.impl.Karte;
+import rummy.make_a_turn.MakeATurnFassade;
 import rummy.matchcenter.port.IMatch;
 import rummy.matchcenter.port.IPlayer;
+import rummy.matchcenter.port.MatchFactory;
 import rummy.socketmanagement.RummySocketController;
 import rummy.statemachine.port.Observer;
 import rummy.statemachine.port.State;
@@ -55,9 +56,55 @@ public class MainController implements Observer {
 	@Autowired
 	private RummySocketController socket;
 
+	/**
+	 * @directed true
+	 * @link aggregation
+	 * @supplierRole match
+	 */
 	private IMatch match;
+	
+	/**
+	 * @directed true
+	 * @link aggregation
+	 * @supplierRole player
+	 */
 	private IPlayer player;
 	private State currentState;
+	
+	/**
+	 * @directed true
+	 * @link aggregation
+	 * @supplierRole fassade
+	 */
+	private MakeATurnFassade fassade = new MakeATurnFassade();
+
+	@RequestMapping(value = "/verdecktZiehen", method = { RequestMethod.POST, RequestMethod.GET })
+	public synchronized String verdecktZiehen(Model model, HttpServletRequest request) {
+		if (request.getMethod().equals("GET"))
+			return this.update(model);
+		this.fassade.verdeckteKarteZiehen(this.match, player);
+		return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
+	}
+	
+	@RequestMapping(value = "/offenZiehen", method = { RequestMethod.POST, RequestMethod.GET })
+	public synchronized String offenZiehen(Model model, HttpServletRequest request) {
+		if (request.getMethod().equals("GET"))
+			return this.update(model);
+		this.fassade.offeneKarteZiehen(this.match, player);
+		return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
+	}
+
+	@RequestMapping(value = "/karteAblegen", method = { RequestMethod.POST, RequestMethod.GET })
+	public synchronized String karteAblegen(
+			@RequestParam(name = "indexKarteSelected", required = false) String indexKarteSelected, Model model,
+			HttpServletRequest request) {
+		if (request.getMethod().equals("GET"))
+			return this.update(model);
+		int indexKarteSelectedInteger = Integer.parseInt(indexKarteSelected);
+		this.fassade.karteAblegen(this.match, this.player, indexKarteSelectedInteger);
+
+		return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
+	}
 
 	private void attach(IMatch match) {
 		this.mvcPort.subject(match.getId()).attach(this);
@@ -83,6 +130,11 @@ public class MainController implements Observer {
 	}
 
 	private String update(Model model) {
+		if ((this.currentState.isSubStateOf(State.S.ZugBeendet))
+				|| (this.currentState.isSubStateOf(State.S.VerdecktGezogen))
+				|| (this.currentState.isSubStateOf(State.S.MussZiehen))) {
+			return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
+		}
 		if (State.S.Closed.isSuperStateOf(this.currentState)) {
 			this.clear();
 			return new QuitView().build(model);
@@ -95,9 +147,7 @@ public class MainController implements Observer {
 				return new MatchView(this.match, this.player, this.match.enoughPlayers()).build(model);
 			return new MatchView(this.match, this.player).build(model);
 		}
-		if (this.currentState.isSubStateOf(State.S.CanCallFOO)) {								// jeme
-			return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
-		}
+
 		return new ErrorView(ErrorView.Error.UnknownState, this.currentState).build(model);
 	}
 
@@ -105,7 +155,6 @@ public class MainController implements Observer {
 	public synchronized String joinOrCreateMatch(//
 			@RequestParam(name = "name", required = false) String name,
 			@RequestParam(name = "matchId", required = false) String matchId, Model model, HttpServletRequest request) {
-
 		if (request.getMethod().equals("GET"))
 			return this.update(model);
 		if (this.match != null)
@@ -117,57 +166,34 @@ public class MainController implements Observer {
 		return page;
 	}
 
-	@RequestMapping(value = "/addCard", method = { RequestMethod.POST, RequestMethod.GET })
-	public synchronized String addCard(Model model, HttpServletRequest request) {
-		if (request.getMethod().equals("GET"))
-			return this.update(model);
-		this.match.addKarte(this.player);
-		return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
-	}
-
-	@RequestMapping(value = "/finishTurn", method = { RequestMethod.POST, RequestMethod.GET })
-	public synchronized String finishTurn(
-			//
-			@RequestParam(name = "indexKarteSelected", required = false) String indexKarteSelected,
-			//
-			Model model, HttpServletRequest request) {
-		System.out.println("finishTurn Path abgerufen");
-		if (request.getMethod().equals("GET"))
-			return this.update(model);
-		// todo
-		System.out.println("index is: " + indexKarteSelected);
-		int indexKarteSelectedInteger = Integer.parseInt(indexKarteSelected);
-		this.match.finishTurn(this.player, indexKarteSelectedInteger);
-
-		return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
-	}
-
 	@RequestMapping(value = "/start", method = { RequestMethod.POST, RequestMethod.GET })
 	public synchronized String start(Model model, HttpServletRequest request) {
-		System.out.println("/start    Path aufgerufen von Player " + this.player.getName());
+
 		if (request.getMethod().equals("GET"))
 			return this.update(model);
 		if (this.match == null)
 			return new ErrorView(ErrorView.Error.NoMatch, this.currentState).build(model);
 
-		if (!this.matchPort.matchManagement().startGame(this.match)) {
-			System.out.println("return new MatchView() for player " + this.player.getName());
+		if (!this.matchPort.matchManagement().startGame(this.match))
 			return new MatchView(this.match, this.player, this.match.enoughPlayers()).build(model);
-		}
-		this.match.initialiseMatch();
-		System.out.println("return new GameView() for player " + this.player.getName());
 		return new GameView(this.match, this.player, this.match.getHost().equals(this.player)).build(model);
 	}
 
 	@RequestMapping(value = "/quit", method = { RequestMethod.POST, RequestMethod.GET })
 	public synchronized String quit(Model model, HttpServletRequest request) {
 
-		if (request.getMethod().equals("GET"))
+		if (request.getMethod().equals("GET")) {
 			return this.update(model);
+		}
 		if (this.match == null)
 			return new ErrorView(ErrorView.Error.NoMatch, this.currentState).build(model);
-		if (!this.matchPort.matchFactory().closeMatch(this.match))
-			return new ErrorView(ErrorView.Error.ClosingFailed, this.currentState).build(model);
+		// von jeme auskommentiert, weil es das Verlassen verhindert, und weil
+		// matchFactory = null
+		/*
+		 * if (!this.matchPort.matchFactory().closeMatch(this.match)) return new
+		 * ErrorView(ErrorView.Error.ClosingFailed, this.currentState).build(model);
+		 */
+
 		this.clear();
 		return new QuitView().build(model);
 	}
@@ -178,12 +204,11 @@ public class MainController implements Observer {
 			return new ErrorView(ErrorView.Error.CreationFailed, this.currentState).build(model);
 		this.player = this.match.getHost();
 		this.attach(match);
-		// an der Stelle muss die StateMachine erzeugt werden // jeme
-		// mvcPort.subject(match.getId()).attach(this); // jeme
 		return new MatchView(this.match, this.player, this.match.enoughPlayers()).build(model);
 	}
 
 	private String joinMatch(String name, int matchId, Model model) {
+
 		this.player = this.matchPort.matchFactory().mkPlayer(name, matchId);
 		if (this.player == null)
 			return new ErrorView(ErrorView.Error.JoiningFailed, this.currentState).build(model);
